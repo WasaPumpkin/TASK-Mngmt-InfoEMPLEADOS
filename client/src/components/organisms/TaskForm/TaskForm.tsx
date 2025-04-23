@@ -23,7 +23,12 @@ interface TaskFormProps {
   loading?: boolean;
 }
 
-const BASE_URL = 'http://localhost:7000';
+// const BASE_URL = 'http://localhost:7000';
+const BASE_URL =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:7000'
+    : 'https://task-mngmt-infoempleados.onrender.com';
+
 
 // Configure Toast once at the component level
 
