@@ -7,7 +7,8 @@ import {
   EditTaskPayload,
 } from './types';
 
-const API_URL = 'http://localhost:7000/api/tasks'; // Local backend API URL
+// const API_URL = 'http://localhost:7000/api/tasks'; 
+const API_URL = 'https://task-mngmt-infoempleados.onrender.com/api/tasks';
 
 // Fetch paginated tasks
 export const fetchTasksAPI = async (token: string, page: number, limit: number) => {

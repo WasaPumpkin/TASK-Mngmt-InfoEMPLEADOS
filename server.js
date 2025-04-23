@@ -29,11 +29,13 @@ app.use(morgan('dev'));
 // CORS middleware
 app.use(
   cors({
-    origin: 'http://localhost:3000', // Replace with your frontend URL
+    origin: [
+      'http://localhost:3000', // Local development
+      'https://task-mngmt-infoempleados.onrender.com', // Production frontend
+    ],
     credentials: true,
   })
 );
-
 // Middleware to parse JSON bodies
 app.use(express.json());
 
