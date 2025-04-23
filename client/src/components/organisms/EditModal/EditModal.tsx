@@ -86,7 +86,8 @@ interface EditModalProps {
   userInfo?: { token: string }; // Added userInfo prop
 }
 
-const BASE_URL = 'http://localhost:7000';
+// const BASE_URL = 'http://localhost:7000';
+const BASE_URL = 'https://task-mngmt-infoempleados.onrender.com';
 
 const EditModal: React.FC<EditModalProps> = ({
   isOpen,
