@@ -10,7 +10,12 @@ import TaskList from '@components/organisms/TaskList/TaskList';
 import Spinner from '@components/atoms/Spinner/Spinner';
 
 // const BASE_URL = 'http://localhost:7000';
-const BASE_URL = 'https://task-mngmt-infoempleados.onrender.com';
+// const BASE_URL = 'https://task-mngmt-infoempleados.onrender.com';
+const BASE_URL =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:7000'
+    : 'https://task-mngmt-infoempleados.onrender.com';
+
 
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();

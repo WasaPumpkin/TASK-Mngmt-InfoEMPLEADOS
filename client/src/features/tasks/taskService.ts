@@ -8,7 +8,11 @@ import {
 } from './types';
 
 // const API_URL = 'http://localhost:7000/api/tasks'; 
-const API_URL = 'https://task-mngmt-infoempleados.onrender.com/api/tasks';
+const API_URL = `${
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:7000'
+    : 'https://task-mngmt-infoempleados.onrender.com'
+}/api/tasks`;
 
 // Fetch paginated tasks
 export const fetchTasksAPI = async (token: string, page: number, limit: number) => {

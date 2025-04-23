@@ -60,10 +60,13 @@
 
 // export default EditModal;
 
+
 // src/components/organisms/EditModal/EditModal.tsx
 import React, { useEffect, useState } from 'react';
+import type { RootState } from '@features/store';
 import Modal from 'react-modal';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import Input from '@components/atoms/Input/Input';
 import Button from '@components/atoms/Button/Button';
 import Select from '@components/atoms/Select/Select';
@@ -83,11 +86,12 @@ interface EditModalProps {
   onEditAssignedToChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   onSubmit: () => void;
   onCancel: () => void;
-  userInfo?: { token: string }; // Added userInfo prop
 }
 
-// const BASE_URL = 'http://localhost:7000';
-const BASE_URL = 'https://task-mngmt-infoempleados.onrender.com';
+const BASE_URL =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:7000'
+    : 'https://task-mngmt-infoempleados.onrender.com';
 
 const EditModal: React.FC<EditModalProps> = ({
   isOpen,
@@ -98,11 +102,12 @@ const EditModal: React.FC<EditModalProps> = ({
   onEditAssignedToChange,
   onSubmit,
   onCancel,
-  userInfo,
 }) => {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const { userInfo } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
     const fetchEmployees = async () => {
